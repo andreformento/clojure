@@ -1,0 +1,14 @@
+version: '2'
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+
+  my-app:
+    build: .
+    ports:
+      - "8080:8080"
+    env_file: ./my-app.env
+    depends_on:
+      - mongo
