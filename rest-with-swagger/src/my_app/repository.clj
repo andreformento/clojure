@@ -25,13 +25,13 @@
   (-> (mc/find-map-by-id db people-collection (ObjectId. id))
       objectId->str))
 
-(defn delete-person [id]
+(defn delete-person! [id]
   (mc/remove-by-id db people-collection (ObjectId. id)))
 
-(defn insert-person [person]
+(defn insert-person! [person]
   (-> (mc/insert-and-return db people-collection (assoc person :_id (ObjectId.)))
       objectId->str))
 
-(defn update-person [id person]
+(defn update-person! [id person]
   (-> (mc/save-and-return db people-collection (assoc person :_id (ObjectId. id)))
       objectId->str))

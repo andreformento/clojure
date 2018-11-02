@@ -3,9 +3,10 @@
    [compojure.api.sweet :refer :all]
    [compojure.route :as route]
    [ring.util.http-response :refer :all]
+   [ring.util.http-status :as status]
    [schema.core :as s]
    [environ.core :refer [env]] ; https://github.com/weavejester/environ
-   [my-app.repository :refer [get-all-people get-person insert-person delete-person update-person]]))
+   [my-app.repository :refer [get-all-people get-person insert-person! delete-person! update-person!]]))
 
 (s/defschema Pizza
   {:name s/Str
@@ -55,7 +56,9 @@
          :body [person NewPerson]
          :return Person
          :summary "Create a person record"
-         (ok (insert-person person)))
+         (let
+          [createdPerson (insert-person! person)]
+           (created (:id createdPerson) createdPerson)))
 
        (context "/:id" [id]
          (GET "/" []
@@ -69,16 +72,16 @@
            :body [person UpdatedPerson]
            :return Person
            :summary "Update a person with provided id"
-           (if-let [person (update-person id person)]
-             (ok person)
+           (if-let [person (update-person! id person)]
+             (accepted person)
              (not-found (str "No person with id " id))))
 
          (DELETE "/" []
            :return String
            :summary "Delete a person with provided id"
            (fn [_]
-             (delete-person id)
+             (delete-person! id)
              (no-content))))))
+
    (undocumented
-    (route/not-found (not-found {:error "Oops! Cannot found :("})))
-   ))
+    (route/not-found (not-found {:error "Oops! Cannot found :("})))))
