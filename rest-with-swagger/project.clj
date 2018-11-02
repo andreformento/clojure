@@ -3,7 +3,6 @@
   :url "http://github.com/andreformento/clojure-rest"
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [metosin/compojure-api "2.0.0-alpha7"]
-                 [environ "1.1.0"]
                  [ring/ring-json "0.4.0"]
                  [cheshire/cheshire "5.8.1"]
                  [com.novemberain/monger "3.1.0"]
