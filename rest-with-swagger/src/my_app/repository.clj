@@ -4,7 +4,10 @@
             [monger.json])
   (:import [org.bson.types ObjectId]))
 
-(def conn (mg/connect {:host "localhost"}))
+(def mongo-host (or (System/getenv "MONGO_HOST")
+                    "localhost"))
+
+(def conn (mg/connect {:host mongo-host}))
 
 (def db (mg/get-db conn "test"))
 
