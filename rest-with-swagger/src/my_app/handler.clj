@@ -1,6 +1,7 @@
 (ns my-app.handler
   (:require
    [compojure.api.sweet :refer :all]
+   [compojure.route :as route]
    [ring.util.http-response :refer :all]
    [schema.core :as s]
    [environ.core :refer [env]] ; https://github.com/weavejester/environ
@@ -77,4 +78,7 @@
            :summary "Delete a person with provided id"
            (fn [_]
              (delete-person id)
-             (no-content))))))))
+             (no-content))))))
+   (undocumented
+    (route/not-found (not-found {:error "Oops! Cannot found :("})))
+   ))
