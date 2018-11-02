@@ -5,7 +5,6 @@
    [ring.util.http-response :refer :all]
    [ring.util.http-status :as status]
    [schema.core :as s]
-   [environ.core :refer [env]] ; https://github.com/weavejester/environ
    [my-app.repository :refer [get-all-people get-person insert-person! delete-person! update-person!]]))
 
 (s/defschema Pizza
