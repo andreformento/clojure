@@ -20,9 +20,9 @@
    {:swagger
     {:ui "/"
      :spec "/swagger.json"
-     :data {:info {:title "Finances Service"
-                   :description "Accounts and transactions"}
-            :tags [{:name "Finances API", :description "Finances Service"}]}}}
+     :data {:info {:title "My Api"
+                   :description "Some description"}
+            :tags [{:name "Person API", :description "Some description for tag"}]}}}
 
    (context "/api" []
      :tags ["api"]
