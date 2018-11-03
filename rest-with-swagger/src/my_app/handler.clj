@@ -5,7 +5,6 @@
    [ring.util.http-response :refer :all]
    [ring.util.http-status :as status]
    [schema.core :as s]
-   [person.repository :refer [get-all-people get-person insert-person! delete-person! update-person!]]
    [person.handler :as person]))
 
 (s/defschema Pizza
