@@ -5,7 +5,8 @@
    [ring.util.http-response :refer :all]
    [ring.util.http-status :as status]
    [schema.core :as s]
-   [my-app.repository :refer [get-all-people get-person insert-person! delete-person! update-person!]]))
+   [person.repository :refer [get-all-people get-person insert-person! delete-person! update-person!]]
+   [person.handler :as person]))
 
 (s/defschema Pizza
   {:name s/Str
@@ -13,12 +14,6 @@
    :size (s/enum :L :M :S)
    :origin {:country (s/enum :FI :PO)
             :city s/Str}})
-
-(s/defschema NewPerson {:name String})
-
-(s/defschema Person (assoc NewPerson :id String))
-
-(s/defschema UpdatedPerson NewPerson)
 
 (def app
   (api
@@ -45,42 +40,35 @@
        (ok pizza))
 
      (context "/people" []
+       :tags ["people"]
 
        (GET "/" []
-         :return [Person]
+         :return [person/Person]
          :summary "List all people"
-         (ok (get-all-people)))
+         (person/get-all-people-handler))
 
        (POST "/" []
-         :body [person NewPerson]
-         :return Person
+         :body [person person/NewPerson]
+         :return person/Person
          :summary "Create a person record"
-         (let
-          [createdPerson (insert-person! person)]
-           (created (:id createdPerson) createdPerson)))
+         (person/insert-person-handler! person))
 
        (context "/:id" [id]
          (GET "/" []
-           :return Person
+           :return person/Person
            :summary "Return person with provided id"
-           (if-let [person (get-person id)]
-             (ok person)
-             (not-found (str "No person with id " id))))
+           (person/get-person-handler id))
 
          (PUT "/" []
-           :body [person UpdatedPerson]
-           :return Person
+           :body [person person/UpdatedPerson]
+           :return person/Person
            :summary "Update a person with provided id"
-           (if-let [person (update-person! id person)]
-             (accepted person)
-             (not-found (str "No person with id " id))))
+           (person/update-person-handler! id person))
 
          (DELETE "/" []
            :return String
            :summary "Delete a person with provided id"
-           (fn [_]
-             (delete-person! id)
-             (no-content))))))
+           (person/delete-person-handler! id)))))
 
    (undocumented
     (route/not-found (not-found {:error "Oops! Cannot found :("})))))

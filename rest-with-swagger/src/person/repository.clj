@@ -1,4 +1,4 @@
-(ns my-app.repository
+(ns person.repository
   (:require [monger.core :as mg]
             [monger.collection :as mc]
             [monger.json])
