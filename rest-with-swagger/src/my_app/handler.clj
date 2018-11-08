@@ -5,7 +5,8 @@
    [ring.util.http-response :refer :all]
    [ring.util.http-status :as status]
    [schema.core :as s]
-   [person.handler :as person]))
+   [person.handler :as person])
+  (:import [org.joda.time LocalDate]))
 
 (s/defschema Pizza
   {:name s/Str
@@ -25,6 +26,15 @@
 
    (context "/api" []
      :tags ["api"]
+
+     (GET "/param" []
+         :query-params [{y :- Long 0}
+                        {text :- String "abc"}
+                        {start-date :- LocalDate (LocalDate/now)}
+                        {tags :- [String] []}]
+         :return String
+         :summary "PARAMS"
+         (str "y=" y "; text=" text "; start-date=" start-date "; tags=" tags))
 
      (GET "/plus" []
        :return {:result Long}
