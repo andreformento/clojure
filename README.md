@@ -3,7 +3,7 @@
 ## Books
 
 - [BRAVE CLOJURE - BECOME A BETTER PROGRAMMER](https://www.braveclojure.com/introduction)
-- [Joy of Clojure](https://www.manning.com/books/the-joy-of-clojure-second-edition)
+- [The Joy of Clojure](https://www.manning.com/books/the-joy-of-clojure-second-edition)
 
 ## Examples of Clojure application
 
