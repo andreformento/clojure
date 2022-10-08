@@ -5,11 +5,10 @@
   - [sdkman](https://sdkman.io/sdks#leiningen): `sdk install leiningen`
   - [Leiningen](https://leiningen.org/)
 
-## References
+## Books
 
 - [BRAVE CLOJURE - BECOME A BETTER PROGRAMMER](https://www.braveclojure.com/introduction)
 - [The Joy of Clojure](https://www.manning.com/books/the-joy-of-clojure-second-edition)
-- [An Interactive Datomic Learning Experience](https://max-datom.com)
 
 ## Examples of Clojure application
 
