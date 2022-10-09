@@ -36,4 +36,23 @@
 (error-message :mild)
 ; => "OH GOD! IT'S A DISASTER! WE'RE MILDLY INCONVENIENCED!"
 
+; list
+(nth '(:a :b :c) 0)
+; => :a
 
+; hash set
+#{"kurt vonnegut" 20 :icicle}
+(hash-set 1 1 2 2)
+; => #{1 2}
+
+; create a set from a list
+(set [3 3 3 4 4])
+; => #{3 4}
+
+(defn chooser
+  "many choices"
+  [[first-choice, second-choice & other-choices]]
+  (println (str "first: " first-choice))
+  (println (str "second: " second-choice))
+  (println (str "other choices: " (clojure.string/join ", " other-choices)))
+  )
