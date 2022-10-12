@@ -56,3 +56,40 @@
   (println (str "second: " second-choice))
   (println (str "other choices: " (clojure.string/join ", " other-choices)))
   )
+
+(defn announce-treasure-location
+  ;[{lat :lat lng :lng}]
+   [{:keys [lat lng]}]
+  (println (str "Treasure lag: " lat))
+  (println (str "Treasure lng: " lng))
+  )
+
+(defn steer-ship! [treasure-location]
+  (println (str "go go go! " treasure-location))
+  )
+
+(defn receive-treasure-location
+  [{:keys [lat lng] :as treasure-location}]
+  (println (str "Treasure lat: " lat))
+  (println (str "Treasure lng: " lng))
+
+  (steer-ship! treasure-location)
+  )
+
+; (receive-treasure-location {:lat 1 :lng 2})
+; Treasure lat: 1
+; Treasure lng: 2
+; go go go! {:lat 1, :lng 2}
+; nil
+
+(#(str %1 " and " %2 " and then... " %&) "first" "second" "blah" 4)
+
+(defn inc-maker
+  "Create a custom incrementator"
+  [inc-by]
+  #(+ % inc-by))
+
+(def inc3 (inc-maker 3))
+
+(inc3 7)
+; => 10
