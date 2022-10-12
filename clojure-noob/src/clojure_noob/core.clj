@@ -93,3 +93,57 @@
 
 (inc3 7)
 ; => 10
+
+(def dalmatian-list ["pongo" "Perdita" "Puppy 1" "Puppy 2"])
+(let [[pongo & dalmatians] dalmatian-list]
+  [pongo dalmatians])
+; ["pongo" ("Perdita" "Puppy 1" "Puppy 2")]
+
+; recursive
+(loop [iteration 0]
+  (println (str "Iteration " iteration))
+  (if (> iteration 3)
+    (println "Goodbye")
+    (recur (inc iteration))))
+; Iteration 0
+; Iteration 1
+; Iteration 2
+; Iteration 3
+; Iteration 4
+; Goodbye
+; nil
+
+; it's equal to:
+(defn recursive-printer
+  ([]
+   (recursive-printer 0))
+  ([iteration]
+   (println (str "Iteration " iteration))
+   (if (> iteration 3)
+     (println "Goodbye")
+     (recursive-printer (inc iteration))))
+  )
+
+(recursive-printer)
+
+; regular expressions
+(re-find #"^left-" "left-eye")
+; => "left-"
+
+(re-find #"^left-" "cleft-chin")
+; => nil
+
+(re-find #"^left-" "wongleblart")
+; => nil
+
+(defn matching-part
+  [part]
+  {:name (clojure.string/replace (:name part) #"^left-" "ring-")
+   :size (:size part)}
+  )
+(matching-part {:name "left-eye" :size 1})
+; => {:name "right-eye" :size 1}]
+
+(matching-part {:name "head" :size 3})
+; => {:name "head" :size 3}]
+
