@@ -112,3 +112,72 @@
 (time (first mapped-details))
 ; => "Elapsed time: 32007.859939 msecs"
 ; => {:makes-blood-puns? false, :has-pulse? true, :name "McFishwich"}
+
+(defn even-numbers
+  ([] (even-numbers 0))
+  ([n] (cons n (lazy-seq (even-numbers (+ n 2))))))
+(take 10 (even-numbers))
+
+(into {:favorite-emotion "smile"} [[:sunlight-reaction "Glitter!"]])
+; => {:favorite-emotion "smile", :sunlight-reaction "Glitter!"}
+
+(into {:favorite-animal "kitty"} {:least-favorite-smell "dog"
+                                  :relationship-with-teenager "creepy"})
+
+(into [0] [1])
+; => [0 1]
+
+(conj [0] [1])
+; => [0 [1]]
+
+(conj [0] 1)
+; => [0 1]
+
+(defn my-conj
+  [target & additions]
+  (into target additions))
+(my-conj [0] 1 2 3)
+; => [0 1 2 3]
+
+(max 0 1 2)
+; => 2
+(max [0 1 2])
+; => [0 1 2]
+
+; # https://www.braveclojure.com/core-functions-in-depth/#apply
+(apply max [0 1 2])
+; => 2
+
+; # https://www.braveclojure.com/core-functions-in-depth/#partial
+(def add10 (partial + 10))
+(add10 3)
+; => 13
+
+(def add-missing-elements
+  (partial conj ["water" "earth" "air"]))
+(add-missing-elements "unobtainium" "adamantium")
+; => ["water" "earth" "air" "unobtainium" "adamantium"]
+
+(defn my-partial
+  [partialized-fn & args]
+  (fn [& more-args]
+    (apply partialized-fn (into args more-args))))
+(def add13 (my-partial + 13))
+; The anonymous function is defined like this:
+; (fn [& more-args]
+;  (apply + (into [13] more-args)))
+(add13 5)
+
+; # https://www.braveclojure.com/core-functions-in-depth/#complement
+(def not-vampire? (complement vampire?))
+(defn identify-humans
+  [social-security-numbers]
+  (filter not-vampire?
+          (map vampire-related-details social-security-numbers)))
+
+(defn my-complement
+  [fun]
+  (fn [& args]
+    (not (apply fun args))))
+(def my-pos? (complement neg?))
+(my-pos? 1)
