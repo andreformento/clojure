@@ -7,7 +7,7 @@
 
 ## References
 
-- [BRAVE CLOJURE - BECOME A BETTER PROGRAMMER](https://www.braveclojure.com/introduction)
+- [BRAVE CLOJURE - BECOME A BETTER PROGRAMMER](https://www.braveclojure.com/functional-programming/#Function_Composition_Instead_of_Attribute_Mutation)
 - [The Joy of Clojure](https://www.manning.com/books/the-joy-of-clojure-second-edition)
 - https://clojure.org/api/cheatsheet
 
