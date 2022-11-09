@@ -17,9 +17,19 @@
 (def c-str (comp :strength :attributes))
 (def c-dex (comp :dexterity :attributes))
 
-(c-int character) ; => 10
-(c-str character) ; =>  4
-(c-dex character) ; =>  5
+(c-int character)                                           ; => 10
+(c-str character)                                           ; =>  4
+(c-dex character)                                           ; =>  5
 
 ; its equal to
 ; (fn [c] (:strength (:attributes c)))
+
+(defn two-comp
+  [f g]
+  (fn [& args]
+    (f (apply g args))))
+
+((two-comp #(str "second: " %) #(str "first: " %)) "a")
+; => "second: first: a"
+
+
