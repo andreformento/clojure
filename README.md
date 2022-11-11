@@ -4,6 +4,10 @@
 - install
   - [sdkman](https://sdkman.io/sdks#leiningen): `sdk install leiningen`
   - [Leiningen](https://leiningen.org/)
+- run
+  - `lein run`
+  - `lein repl`
+  - `lein trampoline run -m clojure.main`
 
 ## References
 
