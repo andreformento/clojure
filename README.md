@@ -10,6 +10,7 @@
 - [BRAVE CLOJURE - BECOME A BETTER PROGRAMMER](https://www.braveclojure.com/functional-programming/#memoize)
 - [The Joy of Clojure](https://www.manning.com/books/the-joy-of-clojure-second-edition)
 - https://clojure.org/api/cheatsheet
+- https://max-datom.com
 
 ## Examples of Clojure application
 
