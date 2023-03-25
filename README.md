@@ -9,6 +9,9 @@
   - `lein repl`
   - `lein trampoline run -m clojure.main`
 
+## Create a new project
+- `lein new app my-project`
+
 ## References
 
 - [Clojure for the Brave and True](https://www.braveclojure.com/read-and-eval/)
