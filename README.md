@@ -11,7 +11,8 @@
 
 ## References
 
-- [BRAVE CLOJURE - BECOME A BETTER PROGRAMMER](https://www.braveclojure.com/read-and-eval/)
+- [Clojure for the Brave and True](https://www.braveclojure.com/read-and-eval/)
+  - [Table of ContentsTable of Contents](https://www.braveclojure.com/clojure-for-the-brave-and-true/)
 - [The Joy of Clojure](https://www.manning.com/books/the-joy-of-clojure-second-edition)
 - https://clojure.org/api/cheatsheet
 - https://max-datom.com
