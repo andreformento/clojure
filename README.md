@@ -14,7 +14,7 @@
 
 ## References
 
-- [Clojure for the Brave and True](https://www.braveclojure.com/read-and-eval/)
+- [Clojure for the Brave and True](https://www.braveclojure.com/read-and-eval/#The_Reader)
   - [Table of Contents](https://www.braveclojure.com/clojure-for-the-brave-and-true/)
 - [The Joy of Clojure](https://www.manning.com/books/the-joy-of-clojure-second-edition)
 - https://clojure.org/api/cheatsheet
