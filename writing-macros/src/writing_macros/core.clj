@@ -6,7 +6,7 @@
   [& args]
   (println "Hello, World!"))
 
-(defn new-line [] (println "------"))
+(defn new-line [what] (println (str "------ " what)))
 
 (when (= "666" "666")
   (println "yes, is yes")
@@ -17,7 +17,7 @@
 ; confirm my confirmation
 ; bias doesn't exist on my bubble
 
-(new-line)
+(new-line "macroexpand")
 
 (println
   (pr-str
@@ -39,7 +39,7 @@
         (first infixed)
         (last infixed)))
 
-(new-line)
+(new-line "infix")
 
 (println (infix (1 + 1)))
 ; 2
@@ -52,12 +52,14 @@
   [[operand1 op operand2]]
   (list op operand1 operand2))
 
-(new-line)
+(new-line "print and return")
 
 (def expression (identity 666))
 (let [result expression]
   (println result)
   result)
+
+(when (test false) 1)
 
 ;(defmacro my-print-whoopsie
 ;  [expression]
@@ -71,3 +73,42 @@
         (list 'println 'result)
         'result))
 
+(list '+ 1 (inc 1))
+; => (+ 1 2)
+
+`(+ 1 ~(inc 1))
+; => (clojure.core/+ 1 2)
+
+(new-line "critic")
+
+(defmacro code-critic-verbose
+  "Phrases are courtesy Hermes Conrad from Futurama"
+  [bad good]
+  (list 'do
+        (list 'println
+              "Great squid of Madrid, this is bad code:"
+              (list 'quote bad))
+        (list 'println
+              "Sweet gorilla of Manila, this is good code:"
+              (list 'quote good))))
+
+(defmacro code-critic-togheter
+  "Phrases are courtesy Hermes Conrad from Futurama"
+  [bad good]
+  `(do (println "Great squid of Madrid, this is bad code:"
+                (quote ~bad))
+       (println "Sweet gorilla of Manila, this is good code:"
+                (quote ~good))))
+
+(defn criticize-code
+  [criticism code]
+  `(println ~criticism (quote ~code)))
+
+(defmacro code-critic
+  [bad good]
+  `(do ~(criticize-code "Cursed bacteria of Liberia, this is bad code:" bad)
+       ~(criticize-code "Sweet sacred boa of Western and Eastern Samoa, this is good code:" good)))
+
+(code-critic (1 + 1) (+ 1 1))
+; => Great squid of Madrid, this is bad code: (1 + 1)
+; => Sweet gorilla of Manila, this is good code: (+ 1 1)
