@@ -14,7 +14,7 @@
 
 ## References
 
-- [Clojure for the Brave and True](https://www.braveclojure.com/writing-macros/#Refactoring_a_Macro_and_Unquote_Splicing)
+- [Clojure for the Brave and True](https://www.braveclojure.com/concurrency/#Futures__Delays__and_Promises)
   - [Table of Contents](https://www.braveclojure.com/clojure-for-the-brave-and-true/)
 - [The Joy of Clojure](https://www.manning.com/books/the-joy-of-clojure-second-edition)
 - https://clojure.org/api/cheatsheet
